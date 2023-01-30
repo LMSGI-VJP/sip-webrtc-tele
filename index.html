@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="infoCall2">
+        <div class="infoUser">
+            <h3>Configuración del usuario</h3>
+            <p>
+                <label>URL socket</label>
+              <input type="text" value="ws://194.224.115.10:8088/ws" id="socket">
+            </p>
+            <p>
+                <label>uri (usuario@IPServidor:Puerto)</label>
+                <input type="text" value="103@194.224.115.10:5060" id="uri">
+            </p>
+            <p>
+                <label>pass</label>
+                <input type="password" value="1234" id="pass">
+            </p>
+            <p>
+                <input type="button" value="Configurar usuario" id="config">
+            </p>
+            <video id="localVideo" muted="muted" autoplay></video>
+        </div>
+        <div clas="infoCall">
+            <h3>Configuración de la llamada</h3>
+            <p>
+                <label>Llamar a (usuario@IPServidor:Puerto):</label>
+                <input type="text" value="102@194.224.115.10" id="callTo">
+            </p>
+            <p>
+                <input type="button" value="Llamar" id="call">
+                <input type="button" value="Cancelar llamada" id="cancelCall" disabled>
+            </p>
+            <video id="remoteVideo" autoplay></video>
+        </div>
+        <div class="contentCall">
+            <h3>Información de la conexión</h3>
+
+        </div>
+    </div>
+  <script src="js/jssip-3.10.0.min.js"></script>
+  <script src="js/call.js"></script>
+</body>
+</html>

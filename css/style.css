@@ -1,0 +1,12 @@
+
+.infoCall2 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 300px 300px 1fr;
+}
+
+video {
+    width: 200px;
+    heihg:200px;
+    border:1px solid;
+}
