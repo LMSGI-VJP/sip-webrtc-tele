@@ -2,8 +2,8 @@
 // Create our JsSIP instance and run it:
 
 // Desactivamos el modo debug para que no nos aparezcan console.log
-JsSIP.debug.disable('JsSIP:*');
-/*JsSIP.debug.enable('JsSIP:*');*/
+/*JsSIP.debug.disable('JsSIP:*');*/
+JsSIP.debug.enable('JsSIP:*');
 
 // Seleccioamos los nodos de los cuales vamos a obtener su value o eventos click
 let nodeSocket = document.querySelector("#socket");
@@ -69,7 +69,7 @@ document.querySelector("#config").addEventListener("click", () => {
         sockets  : [ socket ],
         uri      : nodeUri.value,
         password : nodePass.value,
-        log: { level: 'no' }
+        log: { level: 'debug' }
     };
     ua = new JsSIP.UA(configuration);
     ua.start();
