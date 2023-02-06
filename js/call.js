@@ -95,7 +95,11 @@ document.querySelector("#config").addEventListener("click", () => {
             console.log(ev)
         });
 
-
+    ua.on('registrationFailed', function (ev) {
+            console.log('Error en registro abp')
+            console.log(ev)
+        });
+        
     // Eventos del websocket
     ua.on('connected', function(e){
         contentCall.innerHTML +="<p>Socket conectado</p>";
