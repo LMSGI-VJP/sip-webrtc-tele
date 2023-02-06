@@ -1,4 +1,4 @@
-//https://jssip.net/documentation/0.3.x/api/ua_configuration_parameters/
+// https://jssip.net/documentation/3.10.x/api/ua_configuration_parameters/
 // Create our JsSIP instance and run it:
 
 // Desactivamos el modo debug para que no nos aparezcan console.log
@@ -59,11 +59,12 @@ var eventHandlers = {
 var options = {
     'eventHandlers'    : eventHandlers,
     'extraHeaders': [ 'X-Foo: foo', 'X-Bar: bar' ],
-    'mediaConstraints' : { 'audio': true, 'video': true }
+    'mediaConstraints' : { 'audio': true, 'video': false }
 };
 
 // Cuando hacemos click en el botón de configurar se establece la conexión por WebSocket
 document.querySelector("#config").addEventListener("click", () => {
+
     var socket = new JsSIP.WebSocketInterface(nodeSocket.value);
     var configuration = {
         sockets  : [ socket ],
@@ -71,8 +72,29 @@ document.querySelector("#config").addEventListener("click", () => {
         password : nodePass.value,
         log: { level: 'debug' }
     };
+
+
+    // let asteriskUser = "200"
+    // let asteriskIP = "10.0.4.141"
+    // let asteriskUserPass = "1234"
+    // var socket           = new JsSIP.WebSocketInterface('wss://' + asteriskIP + ':8089/ws');
+    // var configuration    = {
+    //     sockets:          [socket],
+    //     'uri':            'sip:' + asteriskUser + '@' + asteriskIP,
+    //     'password':       asteriskUserPass,
+    //     'session_timers': false
+    // };
+
     ua = new JsSIP.UA(configuration);
     ua.start();
+
+
+
+    ua.on('registered', function (ev) {
+            console.log('Registrado abp')
+            console.log(ev)
+        });
+
 
     // Eventos del websocket
     ua.on('connected', function(e){
